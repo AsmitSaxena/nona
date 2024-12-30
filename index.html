@@ -75,17 +75,19 @@
             overflow: hidden;
             justify-content: center;
             margin: 20px auto;
-            max-width: 80%;
+            width: 80%;
+            max-width: 500px;
+            height: 300px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .carousel img {
-            width: 100%;
-            transition: transform 0.5s ease;
-        }
-        .carousel-container {
             position: relative;
+        }
+        .carousel img, .carousel video {
+            flex-shrink: 0;
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
         .carousel-buttons {
             position: absolute;
@@ -154,7 +156,6 @@
                 <img src="1.jpg" alt="Happy Moment 1">
                 <img src="2.jpg" alt="Happy Moment 2">
                 <img src="3.jpg" alt="Happy Moment 3">
-                <img src="6.jpg" alt="Happy Moment 3">
             </div>
             <div class="carousel-buttons">
                 <button class="carousel-button" onclick="prevSlide()">&#9664;</button>
@@ -190,7 +191,7 @@
 
         function showSlide(index) {
             const carousel = document.getElementById('carousel');
-            const slides = carousel.querySelectorAll('img');
+            const slides = carousel.querySelectorAll('img, video');
             if (index >= slides.length) currentSlide = 0;
             else if (index < 0) currentSlide = slides.length - 1;
             else currentSlide = index;
